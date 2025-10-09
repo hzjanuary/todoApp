@@ -5,13 +5,14 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
+const PORT = process.env.PORT || 5001;
+
 const app = express();
 
 connectDB();
 
-app.use("/api/tasks",taskRoute);
+app.use('/api/tasks', taskRoute);
 
-app.listen(5001, () => {
-    console.log("Server bắt đầu ở cổng 5001");
+app.listen(PORT, () => {
+  console.log(`Server bắt đầu ở cổng ${PORT}`);
 });
-
