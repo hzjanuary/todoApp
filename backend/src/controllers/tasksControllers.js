@@ -17,7 +17,6 @@ export const createTask = async (req, res) => {
 
     const newTask = await task.save();
     res.status(201).json(newTask);
-
   } catch (error) {
     console.error('Lỗi khi gọi createTask', error);
     res.status(500).json({ message: 'Lỗi hệ thống' });
@@ -29,8 +28,12 @@ export const updateTask = async (req, res) => {
     const { id } = req.params;
     const { title, status, completedAt } = req.body;
 
-    const updatedTask = await Task.findByIdAndUpdate(id, { title, status, completedAt }, { new: true });
-    
+    const updatedTask = await Task.findByIdAndUpdate(
+      id,
+      { title, status, completedAt },
+      { new: true },
+    );
+
     if (!updatedTask) {
       return res.status(404).json({ message: 'Nhiệm vụ không tồn tại.' });
     }
@@ -42,6 +45,19 @@ export const updateTask = async (req, res) => {
   }
 };
 
-export const deleteTask = (req, res) => {
-  res.status(200).json({ message: 'Nhiệm vụ mới đã được xóa thành công.' });
+export const deleteTask = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const deletedTask = await Task.findByIdAndDelete(id);
+
+    if (!deletedTask) {
+      return res.status(404).json({ message: 'Nhiệm vụ không tồn tại.' });
+    }
+
+    res.status(200).json(deleteTask);
+  } catch (error) {
+    console.error('Lỗi khi gọi deleteTask', error);
+    res.status(500).json({ message: 'Lỗi hệ thống' });
+  }
 };
