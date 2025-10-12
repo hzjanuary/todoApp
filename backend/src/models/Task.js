@@ -9,8 +9,8 @@ const taskSchema = new mongoose.Schema(
         },
         status: {
             type: String,
-            enum: ["activate", "complete"],
-            default: "activate",
+            enum: ["active", "complete"],
+            default: "active",
         },
         completedAt: {
             type : Date,
