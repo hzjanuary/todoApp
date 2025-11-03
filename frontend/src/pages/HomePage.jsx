@@ -9,8 +9,16 @@ import React from 'react';
 
 const HomePage = () => {
   return (
-    <div className="container pt-8 mx-auto">
-      <div className="w-full max-w-2xl -6 mx-auto space-y-6">
+    <div className="min-h-screen w-full relative">
+  {/* Radial Gradient Background from Top */}
+  <div
+    className="absolute inset-0 z-0"
+    style={{
+      background: "radial-gradient(125% 125% at 50% 10%, #fff 40%, #7c3aed 100%)",
+    }}
+  />
+  <div className="container pt-8 mx-auto relative z-10">
+      <div className="w-full max-w-2xl p-6 mx-auto space-y-6">
         {/* Đầu trang */}
         <Header />
         {/* Tạo nhiệm vụ */}
@@ -28,6 +36,8 @@ const HomePage = () => {
         <Footer />
       </div>
     </div>
+</div>
+
   );
 };
 
