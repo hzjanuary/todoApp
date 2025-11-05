@@ -1,8 +1,10 @@
 import React from 'react'
 
-const StatsAndFilter = () => {
+const StatsAndFilter = (completedTaskCount = 0, activeTaskCount = 0, filter = "all") => {
   return (
-    <div>StatsAndFilter</div>
+    <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
+      
+    </div>
   )
 }
 
