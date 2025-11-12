@@ -1,5 +1,6 @@
 import React from 'react'
 import TaskEmptyState from './TaskEmptyState'
+import TaskCard from './TaskCard'
 
 const TaskList = () => {
   let filter = 'all'
@@ -26,7 +27,13 @@ const TaskList = () => {
 
   return (
     <div className="space-y-3">
-      
+      {filterTask.map((task, index) => {
+        <TaskCard
+          key={task._id ?? index}
+          task={task}
+          index={index}
+        />
+      })}
     </div>
   )
 }
